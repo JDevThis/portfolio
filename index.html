@@ -49,7 +49,7 @@
                 <div class="col-sm-10 d-flex flex-column">
                     <h2 class="mb-4">Full Stack Web Developer</h2>
                     <div class="d-flex flex-column">
-                        <p class="hero-paragraph">I'm an upbeat and dependable Administrator/Web Developer, bringing both energy and experience to the table. My strong interpersonal skills and emotional intelligence make collaboration a breeze. I love tackling challenges, setting high standards, and exceeding expectations – it's what keeps me going.&nbsp;</p>
+                        <p class="hero-paragraph">I'm an upbeat and dependable Web Developer, bringing both energy and experience to the table. My strong interpersonal skills and emotional intelligence make collaboration a breeze. I love tackling challenges, setting high standards, and exceeding expectations – it's what keeps me going.&nbsp;</p>
                         <p class="hero-paragraph">I'm not just hardworking; I'm a quick learner who's excited about picking up new things. Currently ready and raring to go, I can't wait to dive into the next opportunity!</p>
                     </div>
                 </div>
@@ -162,12 +162,47 @@
             </div>
         </div>
     </section><!-- End: Recent Work -->
+    <section class="d-flex align-items-center" style="background: #f7f7f7;/*height: 100vh;*/padding-top: 80px;padding-bottom: 80px;">
+        <div class="container py-4 py-xl-5">
+            <div class="row mb-5">
+                <div class="col-md-8 col-xl-6 text-center mx-auto">
+                    <h2>Personal projects</h2>
+                    <p class="w-lg-50" style="font-size: 0.5em;">Here are a few projects I've worked on. </p>
+                </div>
+            </div>
+            <div class="row gy-4 row-cols-1 row-cols-md-2 row-cols-xl-3">
+                <div class="col"  id="lovecalc">
+                    <div class="card"><img class="card-img-top w-100 d-block fit-cover" style="height: 200px;" src="assets/img/lovCal.png" />
+                        <div class="card-body p-4">
+                            <form method="post" action="index.html#lovecalc" onsubmit="return validateForm()" name="loveCalcForm">
+                                <div class="row">
+                                    <div class="col mb-5">
+                                        <div class="mb-4" style="font-size: 1rem;color: firebrick;" id="errTxt"></div>
+                                        <div class="input-group mb-4"><span class="input-group-text">Your name:</span><input id="nameOne" name="name1" class="form-control" type="text" /></div>
+                                        <div class="input-group mb-4"><span class="input-group-text">Love interest name:</span><input id="nameTwo" name="name2" class="form-control" type="text" /></div>
+                                        <div class="input-group"><button class="btn" onclick="loveCalc(name1,name2);" style="border-radius: 0px;background: #f1eaea;">Get score</button></div>
+                                    </div>
+                                </div>
+                            </form>
+                            <div class="d-flex"><img class="rounded-circle flex-shrink-0 me-3 fit-cover" width="50" height="50" id="loveCalcStatusImg" src="assets/img/no.png" />
+                                <div>
+                                    <p class="fw-bold mb-0" id="loveScore" style="font-size: 1rem;">0</p>
+                                    <p class="text-muted mb-0" id="loveScoreDesc" style="font-size: 1rem;">You are compatible</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script src="assets/js/script.min.js?h=e9987ac57f6f57122be8e387915b67d4"></script>
     <script>
-
+        //Check if i am working
+        function isJohnWorking() {
         /*
         0 - Not working ( Available - green )
         1 - Working on a Project ( Unavailable - red )
@@ -177,7 +212,6 @@
 
         var workingStatus = $(workStatus).attr("value", workingStatusVal);
         var pulsatingCircleStatusVal = "unavailable";
-        function isJohnWorking() {
             if (workingStatusVal == 0) {
                 $(workStatus).text("Available to work");
                 $(pulsating_circle).attr("value","available");
@@ -187,8 +221,48 @@
                 $(pulsating_circle).attr("value","unavailable");
             }            
         }
-
         isJohnWorking();
+
+        //form validation
+        function validateForm() {
+            let x = document.forms["loveCalcForm"]["name1"].value;
+            let y = document.forms["loveCalcForm"]["name2"].value;
+            if (x == "") {
+                document.getElementById("errTxt").innerHTML = "Name must be filled out";
+                return false;
+            }
+            if (y == "") {
+                document.getElementById("errTxt").innerHTML = "Partners name must be filled out";
+                return false;
+            }
+        }
+        
+        //love calculator
+        function loveCalculator(name1,name2) {
+
+            var loveCalc = Math.random() * 100;
+            var loveCalcScore = Math.floor(loveCalc) + 1;
+        
+            if (loveCalc < 20.5){
+                document.getElementById("loveScore").innerHTML = "Your Love Score is " + loveCalcScore;
+                document.getElementById("loveScoreDesc").innerHTML = "You are not compatible";    
+                document.getElementById("loveCalcStatusImg").src = "assets/img/no.png";
+            }
+            if ((loveCalc > 20.5) && (loveCalc < 74.5)){
+                document.getElementById("loveScore").innerHTML = "Your Love Score is " + loveCalcScore;
+                document.getElementById("loveScoreDesc").innerHTML = "You can work on it";    
+                document.getElementById("loveCalcStatusImg").src = "assets/img/maybe.png";
+            }
+            if (loveCalc > 74.5){
+                document.getElementById("loveScore").innerHTML = "Your Love Score is " + loveCalcScore;
+                document.getElementById("loveScoreDesc").innerHTML = "you are compatible";    
+                document.getElementById("loveCalcStatusImg").src = "assets/img/yes.png";
+            }
+        }
+        
+        var name1 = document.getElementById("nameOne").value;
+        var name2 = document.getElementById("nameTwo").value;
+        loveCalculator(name1,name2);
       
     </script>
 </body>
