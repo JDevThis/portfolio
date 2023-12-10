@@ -374,6 +374,7 @@
                     document.getElementById("loveCalcStatusImg").src = "assets/img/projects/loveCalculator/yes.png";
                     
                 }
+                return false;
             }
         //restart button
             function restartLC(){
@@ -443,84 +444,36 @@
                     document.getElementById("bmiScoreDesc").innerHTML = "You are extremely obese";    
                     document.getElementById("bmiCalcStatusImg").src = "assets/img/projects/bmiCalculator/status/5.png";
                 }
+                return false;
             }
         //dice game
             function rollDice(){
-                function ranNumP1(){
-                    var ranNumCalculator = Math.random() * 6; //1-6
-                    var ranNumScore = Math.floor(ranNumCalculator) + 1;
-                    return ranNumScore;
-                }
-                function ranNumP2(){
-                    var ranNumCalculator2 = Math.random() * 6; //1-6
-                    var ranNumScore2 = Math.floor(ranNumCalculator2) + 1;
-                    return ranNumScore2;
-                }
-                var p1Result = ranNumP1(); 
-                var p2Result = ranNumP2();
-                //rules for player 1 dice
-                //if dice is 1
-                if (p1Result === 1){
-                    document.getElementById("player1imageBox").src = "assets/img/projects/diceGame/diceGame1.png";
-                }
-                if (p2Result === 1){
-                    document.getElementById("player2imageBox").src = "assets/img/projects/diceGame/diceGame1.png";
-                }
-                //if dice is 2
-                if (p1Result === 2){
-                    document.getElementById("player1imageBox").src = "assets/img/projects/diceGame/diceGame2.png";
-                }
-                if (p2Result === 2){
-                    document.getElementById("player2imageBox").src = "assets/img/projects/diceGame/diceGame2.png";
-                }
-                //if dice is 3
-                if (p1Result === 3){
-                    document.getElementById("player1imageBox").src = "assets/img/projects/diceGame/diceGame3.png";
-                }
-                if (p2Result === 3){
-                    document.getElementById("player2imageBox").src = "assets/img/projects/diceGame/diceGame3.png";
-                }
-                //if dice is 4
-                if (p1Result === 4){
-                    document.getElementById("player1imageBox").src = "assets/img/projects/diceGame/diceGame4.png";
-                }
-                if (p2Result === 4){
-                    document.getElementById("player2imageBox").src = "assets/img/projects/diceGame/diceGame4.png";
-                }
-                //if dice is 5
-                if (p1Result === 5){
-                    document.getElementById("player1imageBox").src = "assets/img/projects/diceGame/diceGame5.png";
-                }
-                if (p2Result === 5){
-                    document.getElementById("player2imageBox").src = "assets/img/projects/diceGame/diceGame5.png";
-                }
-                //if dice is 6
-                if (p1Result === 6){
-                    document.getElementById("player1imageBox").src = "assets/img/projects/diceGame/diceGame6.png";
-                }
-                if (p2Result === 6){
-                    document.getElementById("player2imageBox").src = "assets/img/projects/diceGame/diceGame6.png";
-                } 
-                //if p1 and p2 roll the same number
-                if (p1Result === p2Result){
-                    document.getElementById("winnerAlert").innerHTML = "It's a tie";
-                    document.getElementById("winnerAlertImg").src = "assets/img/projects/diceGame/diceGameTie.png";
-                    return false;
-                }
-                //if p1 rolls higher than p2 - p1 wins
-                if (p1Result > p2Result){
+                var ranNum1 = Math.floor(Math.random() * 6) + 1; // get number from 1 - 6
+                var randomDiceImage = "diceGame"+ ranNum1 + ".png"; // get image of dice 1 - 6
+                var randomDiceImageSrc = "assets/img/projects/diceGame/" + randomDiceImage; //location of dice 1-6 images
+
+                var image1 = document.getElementById("player1imageBox").src = randomDiceImageSrc;
+
+                var ranNum2 = Math.floor(Math.random() * 6) + 1; // get number from 1 - 6
+                var randomDiceImage2 = "diceGame"+ ranNum2 + ".png"; // get image of dice 1 - 6
+                var randomDiceImageSrc2 = "assets/img/projects/diceGame/" + randomDiceImage2; //location of dice 1-6 images
+
+                var image2 = document.getElementById("player2imageBox").src = randomDiceImageSrc2;
+
+                //if player1 wins
+
+                if (ranNum1 > ranNum2){
                     document.getElementById("winnerAlert").innerHTML = "Player 1 wins";
                     document.getElementById("winnerAlertImg").src = "assets/img/projects/diceGame/diceGame1wins.png";
-                    return false;
-                }
-                //if p2 rolls higher than p1 - p2 wins
-                if (p1Result < p2Result){
+                }else if(ranNum2 > ranNum1){ //if player2 wins
                     document.getElementById("winnerAlert").innerHTML = "Player 2 wins";
                     document.getElementById("winnerAlertImg").src = "assets/img/projects/diceGame/diceGame2wins.png";
-                    return false;
-                } 
-
-            }            
+                }else{
+                    document.getElementById("winnerAlert").innerHTML = "It's a tie";
+                    document.getElementById("winnerAlertImg").src = "assets/img/projects/diceGame/diceGameTie.png";
+                }
+                return false;
+            } 
     </script>
 </body>
 
