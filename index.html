@@ -162,6 +162,7 @@
             </div>
         </div>
     </section><!-- End: Recent Work -->
+    <!-- Start: My Projects -->
     <section class="d-flex align-items-center" style="background: #f7f7f7;/*height: 100vh;*/padding-top: 80px;padding-bottom: 80px;">
         <div class="container py-4 py-xl-5">
             <div class="row mb-5">
@@ -171,38 +172,71 @@
                 </div>
             </div>
             <div class="row gy-4 row-cols-1 row-cols-md-2 row-cols-xl-3">
-                <div class="col"  id="lovecalc">
-                    <div class="card"><img class="card-img-top w-100 d-block fit-cover" style="height: 200px;" src="assets/img/lovCal.png" />
-                        <div class="card-body p-4">
-                            <form method="get" action="index.html#lovecalc" onsubmit="return validateForm()" name="loveCalcForm">
-                                <div class="row">
-                                    <div class="col mb-5">
-                                        <div class="mb-4" style="font-size: 1rem;color: firebrick;" id="errTxt"></div>
-                                        <div class="input-group mb-4"><span class="input-group-text">Your name:</span><input id="nameOne" name="name1" class="form-control" type="text" /></div>
-                                        <div class="input-group mb-4"><span class="input-group-text">Love interest name:</span><input id="nameTwo" name="name2" class="form-control" type="text" /></div>
-                                        <div class="input-group"><button class="btn" onclick="loveCalc(name1,name2);" style="border-radius: 0px;background: #f1eaea;">Get score</button></div>
+                <!-- Start: Love Calculator -->
+                    <div class="col"  id="lovecalc">
+                        <div class="card"><img class="card-img-top w-100 d-block fit-cover" style="height: 200px;" src="assets/img/loveCalculator/lovCal.png" />
+                            <div class="card-body p-4">
+                                <form id="lcForm" class="d-flex" method="post" action="./index.html#lovecalc" name="loveCalcForm" >
+                                    <div class="row">
+                                        <div class="col mb-5">
+                                            <div class="mb-4" style="font-size: 1rem;color: firebrick;" id="errTxtLC"></div>
+                                            <div class="input-group mb-4"><span class="input-group-text">Your name:</span><input id="nameOne" name="name1" class="form-control" type="text" value=""/></div>
+                                            <div class="input-group mb-4"><span class="input-group-text">Love interest name:</span><input id="nameTwo" name="name2" class="form-control" type="text" value=""/></div>
+                                            <div class="input-group"><button class="btn" style="border-radius: 0px;background: #f1eaea;" onclick="return validateFormLC();">Get score</button></div>
+                                        </div>
                                     </div>
-                                </div>
-                            </form>
-                            <div class="d-flex"><img class="rounded-circle flex-shrink-0 me-3 fit-cover" width="50" height="50" id="loveCalcStatusImg" src="assets/img/no.png" />
-                                <div>
-                                    <p class="fw-bold mb-0" id="loveScore" style="font-size: 1rem;">0</p>
-                                    <p class="text-muted mb-0" id="loveScoreDesc" style="font-size: 1rem;">You are compatible</p>
+                                </form>
+                                <div id="loveCalcResult" class="d-none"><img class="rounded-circle flex-shrink-0 me-3 fit-cover" width="50" height="50" id="loveCalcStatusImg" />
+                                    <div>
+                                        <p class="fw-bold mb-0" id="loveScore" style="font-size: 1rem;"></p>
+                                        <p class="text-muted mb-0" id="loveScoreDesc" style="font-size: 1rem;"></p>
+                                        <button class="btn" style="border-radius: 0px;background: #f1eaea;" onclick="return restartLC();">Try again</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                <!-- End: Love Calculator -->
+                <!-- Start: BMI Calculator -->
+                    <div class="col"  id="bmicalc">
+                        <div class="card"><img class="card-img-top w-100 d-block fit-cover" style="height: 200px;" src="assets/img/bmiCalculator/bmiCal.png" />
+                            <div class="card-body p-4">
+                                <form id="bmiForm" class="d-flex" method="post" action="./index.html#bmicalc" name="bmiCalcForm" >
+                                    <div class="row">
+                                        <div class="col mb-5">
+                                            <div class="mb-4" style="font-size: 1rem;color: firebrick;" id="errTxtBmi"></div>
+                                            <div class="input-group mb-4"><span class="input-group-text">Height:</span><input id="heightOne" name="height1" class="form-control" type="number" value=""/><span class="input-group-text">m</span></div>
+                                            <div class="input-group mb-4"><span class="input-group-text">Weight:</span><input id="weightTwo" name="weight1" class="form-control" type="number" value=""/><span class="input-group-text">kg</span></div>
+                                            <div class="input-group"><button class="btn" style="border-radius: 0px;background: #f1eaea;" onclick="return validateFormBMI();">Get BMI score</button></div>
+                                        </div>
+                                    </div>
+                                </form>
+                                <div id="bmiCalcResult" class="d-none"><img class="rounded-circle flex-shrink-0 me-3 fit-cover" width="50" height="50" id="bmiCalcStatusImg" />
+                                    <div>
+                                        <p class="fw-bold mb-0" id="bmiScore" style="font-size: 1rem;"></p>
+                                        <p class="text-muted mb-0" id="bmiScoreDesc" style="font-size: 1rem;"></p>
+                                        <button class="btn" style="border-radius: 0px;background: #f1eaea;" onclick="return restartBMIc();">Try again</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <!-- End: Love Calculator -->
             </div>
         </div>
     </section>
+    <!-- End: Love Calculator -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script src="assets/js/script.min.js?h=e9987ac57f6f57122be8e387915b67d4"></script>
     <script>
+        //call working status function
+            isJohnWorking();
+
+
         //Check if i am working
-        function isJohnWorking() {
+            function isJohnWorking() {
         /*
         0 - Not working ( Available - green )
         1 - Working on a Project ( Unavailable - red )
@@ -221,49 +255,162 @@
                 $(pulsating_circle).attr("value","unavailable");
             }            
         }
-        isJohnWorking();
-
-        //form validation
-        function validateForm() {
+        
+        //form validation for love calculator
+            function validateFormLC() {
             let x = document.forms["loveCalcForm"]["name1"].value;
             let y = document.forms["loveCalcForm"]["name2"].value;
             if (x == "") {
-                document.getElementById("errTxt").innerHTML = "Name must be filled out";
+                document.getElementById("errTxtLC").innerHTML = "Name must be filled out";
                 return false;
             }
             if (y == "") {
-                document.getElementById("errTxt").innerHTML = "Partners name must be filled out";
+                document.getElementById("errTxtLC").innerHTML = "Partners name must be filled out";
+                return false;
+            }
+            if ((x == undefined || x == null || x == '') && (y === undefined || y === null || y === '')) {
+                
+                document.getElementById("errTxtLC").innerHTML = "Empty fields";
+                return false;
+            }else{
+                
+                document.getElementById("lcForm").classList.remove("d-flex");
+                document.getElementById("lcForm").classList.add("d-none");
+                document.getElementById("errTxtLC").innerHTML ="";                
+                
+                var lc = loveCalculator(x,y);
                 return false;
             }
         }
-        
+        //form validation for bmi calculator
+            function validateFormBMI() {
+                let h = document.forms["bmiForm"]["height1"].value;
+                let w = document.forms["bmiForm"]["weight1"].value;
+                if (h == "") {
+                    document.getElementById("errTxtBmi").innerHTML = "Height must be filled out";
+                    return false;
+                }
+                if (w == "") {
+                    document.getElementById("errTxtBmi").innerHTML = "Weight name must be filled out";
+                    return false;
+                }
+                if ((h == undefined || h == null || h == '') && (w === undefined || w === null || w === '')) {
+                    
+                    document.getElementById("errTxtBmi").innerHTML = "Empty fields";
+                    return false;
+                }else{
+                    
+                    document.getElementById("bmiForm").classList.remove("d-flex");
+                    document.getElementById("bmiForm").classList.add("d-none");
+                    document.getElementById("errTxtBmi").innerHTML ="";                
+                    
+                    var bmi = bmiCalculator(w, h);
+                    return false;
+                }
+            }
+           
         //love calculator
-        function loveCalculator(name1,name2) {
+            function loveCalculator(x,y) { 
+                
+                var loveCalc = Math.random() * 100;
+                var loveCalcScore = Math.floor(loveCalc) + 1;
+                var showResult = document.getElementById("loveCalcResult");
 
-            var loveCalc = Math.random() * 100;
-            var loveCalcScore = Math.floor(loveCalc) + 1;
-        
-            if (loveCalc < 20.5){
-                document.getElementById("loveScore").innerHTML = "Your Love Score is " + loveCalcScore;
-                document.getElementById("loveScoreDesc").innerHTML = "You are not compatible";    
-                document.getElementById("loveCalcStatusImg").src = "assets/img/no.png";
+                if (loveCalc < 20.5){
+                    showResult.classList.remove("d-none");
+                    showResult.classList.add("d-flex");
+                    document.getElementById("loveScore").innerHTML = "Your Love Score is " + loveCalcScore;
+                    document.getElementById("loveScoreDesc").innerHTML = "You are not compatible";    
+                    document.getElementById("loveCalcStatusImg").src = "assets/img/loveCalculator/no.png";
+                    
+                }   
+                if ((loveCalc > 20.5) && (loveCalc < 74.5)){
+                    showResult.classList.remove("d-none");
+                    showResult.classList.add("d-flex");
+                    document.getElementById("loveScore").innerHTML = "Your Love Score is " + loveCalcScore;
+                    document.getElementById("loveScoreDesc").innerHTML = "You can work on it";    
+                    document.getElementById("loveCalcStatusImg").src = "assets/img/loveCalculator/maybe.png";
+                    
+                }   
+                if (loveCalc > 74.5){
+                    showResult.classList.remove("d-none");
+                    showResult.classList.add("d-flex");
+                    document.getElementById("loveScore").innerHTML = "Your Love Score is " + loveCalcScore;
+                    document.getElementById("loveScoreDesc").innerHTML = "you are compatible";    
+                    document.getElementById("loveCalcStatusImg").src = "assets/img/loveCalculator/yes.png";
+                    
+                }
             }
-            if ((loveCalc > 20.5) && (loveCalc < 74.5)){
-                document.getElementById("loveScore").innerHTML = "Your Love Score is " + loveCalcScore;
-                document.getElementById("loveScoreDesc").innerHTML = "You can work on it";    
-                document.getElementById("loveCalcStatusImg").src = "assets/img/maybe.png";
-            }
-            if (loveCalc > 74.5){
-                document.getElementById("loveScore").innerHTML = "Your Love Score is " + loveCalcScore;
-                document.getElementById("loveScoreDesc").innerHTML = "you are compatible";    
-                document.getElementById("loveCalcStatusImg").src = "assets/img/yes.png";
-            }
-        }
-        
-        var name1 = document.getElementById("nameOne").value;
-        var name2 = document.getElementById("nameTwo").value;
-        loveCalculator(name1,name2);
       
+        //restart button
+            function restartLC(){
+            //show form
+            document.getElementById("lcForm").classList.remove("d-none");
+            document.getElementById("lcForm").classList.add("d-flex");
+
+            //hide score
+            document.getElementById('nameOne').value = '';
+            document.getElementById('nameTwo').value = '';
+            document.getElementById("loveCalcResult").classList.remove("d-flex");
+            document.getElementById("loveCalcResult").classList.add("d-none");
+            
+        }
+        //restart button
+            function restartBMIc(){
+            //show form
+            document.getElementById("bmiForm").classList.remove("d-none");
+            document.getElementById("bmiForm").classList.add("d-flex");
+
+            //hide score
+            document.getElementById('heightOne').value = '';
+            document.getElementById('weightTwo').value = '';
+            document.getElementById("bmiCalcResult").classList.remove("d-flex");
+            document.getElementById("bmiCalcResult").classList.add("d-none");
+            
+        }
+        //bmi calculator
+            function bmiCalculator(w, h) {
+                var hSquared = Math.pow(h, 2); //MathPow get the power of 
+                var bmiCalc = w / hSquared ;
+                var roundedBmi = Math.round(bmiCalc); //round it to nearest whole number
+                var showBmiResult = document.getElementById("bmiCalcResult"); 
+
+                if (roundedBmi < 18.5){
+                    showBmiResult.classList.remove("d-none");
+                    showBmiResult.classList.add("d-flex");
+                    document.getElementById("bmiScore").innerHTML = "Your BMI is " + roundedBmi;
+                    document.getElementById("bmiScoreDesc").innerHTML = "You are underweight";    
+                    document.getElementById("bmiCalcStatusImg").src = "assets/img/bmiCalculator/status/1.png";
+                }
+                if ((roundedBmi > 18.5) && (roundedBmi < 24.9)){
+                    showBmiResult.classList.remove("d-none");
+                    showBmiResult.classList.add("d-flex");
+                    document.getElementById("bmiScore").innerHTML = "Your BMI is " + roundedBmi;
+                    document.getElementById("bmiScoreDesc").innerHTML = "You are normal weight";    
+                    document.getElementById("bmiCalcStatusImg").src = "assets/img/bmiCalculator/status/2.png";
+                }
+                if ((roundedBmi > 25) && (roundedBmi < 29.9)){
+                    showBmiResult.classList.remove("d-none");
+                    showBmiResult.classList.add("d-flex");
+                    document.getElementById("bmiScore").innerHTML = "Your BMI is " + roundedBmi;
+                    document.getElementById("bmiScoreDesc").innerHTML = "You are over weight";    
+                    document.getElementById("bmiCalcStatusImg").src = "assets/img/bmiCalculator/status/3.png";
+                }
+                if ((roundedBmi > 30) && (roundedBmi < 34.9)){
+                    showBmiResult.classList.remove("d-none");
+                    showBmiResult.classList.add("d-flex");
+                    document.getElementById("bmiScore").innerHTML = "Your BMI is " + roundedBmi;
+                    document.getElementById("bmiScoreDesc").innerHTML = "You are obese";    
+                    document.getElementById("bmiCalcStatusImg").src = "assets/img/bmiCalculator/status/4.png";
+                }
+                if (roundedBmi > 35){
+                    showBmiResult.classList.remove("d-none");
+                    showBmiResult.classList.add("d-flex");
+                    document.getElementById("bmiScore").innerHTML = "Your BMI is " + roundedBmi;
+                    document.getElementById("bmiScoreDesc").innerHTML = "You are extremely obese";    
+                    document.getElementById("bmiCalcStatusImg").src = "assets/img/bmiCalculator/status/5.png";
+                }
+            }
     </script>
 </body>
 
