@@ -16,7 +16,7 @@
 
 </head>
 
-<body style="font-size: 28px;font-family: 'Mona Sans','Helvetica Neue',Helvetica,Arial,sans-serif;">
+<body onload="isJohnWorking();" style="font-size: 28px;font-family: 'Mona Sans','Helvetica Neue',Helvetica,Arial,sans-serif;">
     <!-- Start: Navbar With Button -->
         <nav class="navbar navbar-expand-md bg-body py-3">
             <div class="container"><a class="navbar-brand d-flex" href="#"><span class="bs-icon-sm d-flex justify-content-center align-items-center me-4 bs-icon"><img class="img-fluid" src="https://avatars.githubusercontent.com/u/152988655?v=4" style="border-radius: 50%;"></span>
@@ -242,6 +242,26 @@
                             </div>
                         </div>
                     <!-- End: BMI Calculator -->
+                    <!-- Start: BMI Calculator -->
+                    <div id="diceGame" class="col">
+                        <div class="card"><img class="card-img-top w-100 d-block card-img-top w-100 fit-cover" style="height: 200px;" src="assets/img/projects/diceGame/diceGame.png" id="winnerAlertImg"  />
+                            <div class="card-body p-4">
+                                <form id="diceGameForm" class="d-block" method="post" action="./index.html#diceGame" name="diceGameForm">
+                                    <div class="row">
+                                        <div class="col mb-5">
+                                            <div class="d-flex justify-content-between mb-4">
+                                                <div><img class="flex-shrink-0 me-3 fit-cover" width="50" height="50" id="player1imageBox" /></div>
+                                                <div><img class="flex-shrink-0 me-3 fit-cover" width="50" height="50" id="player2imageBox" /></div>
+                                            </div>
+                                            <div id="winnerAlert" class="mb-4" style="font-size: 1rem;color: firebrick;"></div>
+                                            <div class="input-group"><button class="btn" style="border-radius: 0px;background: #f1eaea;" onclick="return rollDice();"> Roll the Dice</button></div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                <!-- End: BMI Calculator -->
                 </div>
             </div>
         </section>
@@ -251,10 +271,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script src="assets/js/script.min.js?h=e9987ac57f6f57122be8e387915b67d4"></script>
     <script>
-        //call working status function
-            isJohnWorking();
-
-
         //Check if i am working
             function isJohnWorking() {
         /*
@@ -275,7 +291,6 @@
                 $(pulsating_circle).attr("value","unavailable");
             }            
         }
-        
         //form validation for love calculator
             function validateFormLC() {
             let x = document.forms["loveCalcForm"]["name1"].value;
@@ -429,6 +444,58 @@
                     document.getElementById("bmiCalcStatusImg").src = "assets/img/projects/bmiCalculator/status/5.png";
                 }
             }
+        //dice game
+            function rollDice(){
+                function ranNumP1(){
+                    var ranNumCalculator = Math.random() * 6; //1-6
+                    var ranNumScore = Math.floor(ranNumCalculator) + 1;
+                    return ranNumScore;
+                }
+                function ranNumP2(){
+                    var ranNumCalculator2 = Math.random() * 6; //1-6
+                    var ranNumScore2 = Math.floor(ranNumCalculator2) + 1;
+                    return ranNumScore2;
+                }
+                var p1Result = ranNumP1(); 
+                var p2Result = ranNumP2();
+                
+                if (p1Result === 1){
+                    document.getElementById("player1imageBox").src = "assets/img/projects/diceGame/diceGame1.png";
+                }
+                if (p1Result === 1){
+                    document.getElementById("player2imageBox").src = "assets/img/projects/diceGame/diceGame1.png";
+                }
+                if (p1Result === 2){
+                    document.getElementById("player1imageBox").src = "assets/img/projects/diceGame/diceGame2.png";
+                }
+                if (p1Result === 3){
+                    document.getElementById("player1imageBox").src = "assets/img/projects/diceGame/diceGame3.png";
+                }
+                if (p1Result === 4){
+                    document.getElementById("player1imageBox").src = "assets/img/projects/diceGame/diceGame4.png";
+                }
+                if (p1Result === 5){
+                    document.getElementById("player1imageBox").src = "assets/img/projects/diceGame/diceGame5.png";
+                }
+                if (p1Result === 6){
+                    document.getElementById("player1imageBox").src = "assets/img/projects/diceGame/diceGame6.png";
+                } 
+                if (p1Result === p2Result){
+                    document.getElementById("winnerAlert").innerHTML = "It's a tie";
+                    document.getElementById("winnerAlertImg").src = "assets/img/projects/diceGame/diceGameTie.png";
+                    return false;
+                }
+                if (p1Result > p2Result){
+                    document.getElementById("winnerAlert").innerHTML = "Player 1 wins";
+                    document.getElementById("winnerAlertImg").src = "assets/img/projects/diceGame/diceGame1wins.png";
+                    return false;
+                }
+                if (p1Result < p2Result){
+                    document.getElementById("winnerAlert").innerHTML = "Player 2 wins";
+                    document.getElementById("winnerAlertImg").src = "assets/img/projects/diceGame/diceGame2wins.png";
+                    return false;
+                } 
+            }            
     </script>
 </body>
 
