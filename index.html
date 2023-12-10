@@ -242,26 +242,26 @@
                             </div>
                         </div>
                     <!-- End: BMI Calculator -->
-                    <!-- Start: BMI Calculator -->
+                    <!-- Start: Dice Game -->
                     <div id="diceGame" class="col">
                         <div class="card"><img class="card-img-top w-100 d-block card-img-top w-100 fit-cover" style="height: 200px;" src="assets/img/projects/diceGame/diceGame.png" id="winnerAlertImg"  />
-                            <div class="card-body p-4">
+                            <div class="card-body p-3">
                                 <form id="diceGameForm" class="d-block" method="post" action="./index.html#diceGame" name="diceGameForm">
                                     <div class="row">
                                         <div class="col mb-5">
                                             <div class="d-flex justify-content-between mb-4">
-                                                <div><img class="flex-shrink-0 me-3 fit-cover" width="50" height="50" id="player1imageBox" /></div>
-                                                <div><img class="flex-shrink-0 me-3 fit-cover" width="50" height="50" id="player2imageBox" /></div>
+                                                <div><img class="flex-shrink-0 me-3 fit-cover" width="50" height="50" id="player1imageBox" src="assets/img/projects/diceGame/diceroll.png"/></div>
+                                                <div><img class="flex-shrink-0  fit-cover" width="50" height="50" id="player2imageBox" src="assets/img/projects/diceGame/diceroll.png"/></div>
                                             </div>
-                                            <div id="winnerAlert" class="mb-4" style="font-size: 1rem;color: firebrick;"></div>
-                                            <div class="input-group"><button class="btn" style="border-radius: 0px;background: #f1eaea;" onclick="return rollDice();"> Roll the Dice</button></div>
+                                            <div id="winnerAlert" class="mb-4 text-center" style="font-size: 1rem;color: firebrick;"></div>
+                                            <div class="input-group d-flex justify-content-center"><button class="btn" style="border-radius: 0px;background: #f1eaea;" onclick="return rollDice();"> Roll the Dice</button></div>
                                         </div>
                                     </div>
                                 </form>
                             </div>
                         </div>
                     </div>
-                <!-- End: BMI Calculator -->
+                <!-- End: Dice Game -->
                 </div>
             </div>
         </section>
@@ -458,43 +458,68 @@
                 }
                 var p1Result = ranNumP1(); 
                 var p2Result = ranNumP2();
-                
+                //rules for player 1 dice
+                //if dice is 1
                 if (p1Result === 1){
                     document.getElementById("player1imageBox").src = "assets/img/projects/diceGame/diceGame1.png";
                 }
-                if (p1Result === 1){
+                if (p2Result === 1){
                     document.getElementById("player2imageBox").src = "assets/img/projects/diceGame/diceGame1.png";
                 }
+                //if dice is 2
                 if (p1Result === 2){
                     document.getElementById("player1imageBox").src = "assets/img/projects/diceGame/diceGame2.png";
                 }
+                if (p2Result === 2){
+                    document.getElementById("player2imageBox").src = "assets/img/projects/diceGame/diceGame2.png";
+                }
+                //if dice is 3
                 if (p1Result === 3){
                     document.getElementById("player1imageBox").src = "assets/img/projects/diceGame/diceGame3.png";
                 }
+                if (p2Result === 3){
+                    document.getElementById("player2imageBox").src = "assets/img/projects/diceGame/diceGame3.png";
+                }
+                //if dice is 4
                 if (p1Result === 4){
                     document.getElementById("player1imageBox").src = "assets/img/projects/diceGame/diceGame4.png";
                 }
+                if (p2Result === 4){
+                    document.getElementById("player2imageBox").src = "assets/img/projects/diceGame/diceGame4.png";
+                }
+                //if dice is 5
                 if (p1Result === 5){
                     document.getElementById("player1imageBox").src = "assets/img/projects/diceGame/diceGame5.png";
                 }
+                if (p2Result === 5){
+                    document.getElementById("player2imageBox").src = "assets/img/projects/diceGame/diceGame5.png";
+                }
+                //if dice is 6
                 if (p1Result === 6){
                     document.getElementById("player1imageBox").src = "assets/img/projects/diceGame/diceGame6.png";
+                }
+                if (p2Result === 6){
+                    document.getElementById("player2imageBox").src = "assets/img/projects/diceGame/diceGame6.png";
                 } 
+                //if p1 and p2 roll the same number
                 if (p1Result === p2Result){
                     document.getElementById("winnerAlert").innerHTML = "It's a tie";
                     document.getElementById("winnerAlertImg").src = "assets/img/projects/diceGame/diceGameTie.png";
                     return false;
                 }
+                //if p1 rolls higher than p2 - p1 wins
                 if (p1Result > p2Result){
                     document.getElementById("winnerAlert").innerHTML = "Player 1 wins";
                     document.getElementById("winnerAlertImg").src = "assets/img/projects/diceGame/diceGame1wins.png";
                     return false;
                 }
+                //if p2 rolls higher than p1 - p2 wins
                 if (p1Result < p2Result){
                     document.getElementById("winnerAlert").innerHTML = "Player 2 wins";
                     document.getElementById("winnerAlertImg").src = "assets/img/projects/diceGame/diceGame2wins.png";
                     return false;
                 } 
+
             }            
     </script>
 </body>
