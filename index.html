@@ -13,7 +13,42 @@
         Author: John Adekunmi
         Updated on: December 10, 2023
     -->
-
+    <style>
+        /* hero */
+        #hero{
+            height: 80vh;
+            padding: 10px;
+        }
+        /* work */
+        #work{
+            background: #f7f7f7 !important;
+            height: 90vh;
+            padding: 10px;
+        }
+        /* projects */
+        #projects{
+            background: #ffffff;
+            padding-top: 80px;
+            padding-bottom: 80px;
+        }
+        /*form */
+        form{
+            justify-content: center;
+        }
+        /* dice game */
+        #diceGame .card{
+            height: 100%;
+            box-shadow: #122c114d 0px 0px 5px;
+        }        
+        #diceGame .card .card-img-top{
+            height: 200px;
+        }
+        #diceGame .card-body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
 </head>
 
 <body onload="isJohnWorking();" style="font-size: 28px;font-family: 'Mona Sans','Helvetica Neue',Helvetica,Arial,sans-serif;">
@@ -48,7 +83,7 @@
         </nav>
     <!-- End: Navbar With Button -->
     <!-- Start: hero -->
-        <section class="d-flex" style="height: 80vh;padding: 10px;">
+        <section id="hero" class="d-flex">
             <!-- Start: 1 Row 1 Column -->
             <div class="container d-flex justify-content-center align-items-center">
                 <div class="row d-flex justify-content-start">
@@ -71,7 +106,7 @@
         </section>
     <!-- End: hero -->
     <!-- Start: Recent Work -->
-        <section class="d-flex align-items-center" style="background: #e9e8e8;height: 90vh;padding: 10px;">
+        <section id="work" class="d-flex align-items-center">
             <div class="container">
                 <div class="row mb-5">
                     <div class="col-md-8 col-xl-6 text-start mx-auto">
@@ -183,7 +218,7 @@
         </section>
     <!-- End: Recent Work -->
     <!-- Start: My Projects -->
-        <section class="d-flex align-items-center" style="background: #f7f7f7;/*height: 100vh;*/padding-top: 80px;padding-bottom: 80px;">
+        <section id="projects" class="d-flex align-items-center">
             <div class="container py-4 py-xl-5">
                 <div class="row mb-5">
                     <div class="col-md-8 col-xl-6 text-center mx-auto">
@@ -202,7 +237,7 @@
                                                 <div class="mb-4" style="font-size: 1rem;color: firebrick;" id="errTxtLC"></div>
                                                 <div class="input-group mb-4"><span class="input-group-text">Your name:</span><input id="nameOne" name="name1" class="form-control" type="text" value=""/></div>
                                                 <div class="input-group mb-4"><span class="input-group-text">Love interest name:</span><input id="nameTwo" name="name2" class="form-control" type="text" value=""/></div>
-                                                <div class="input-group"><button class="btn" style="border-radius: 0px;background: #f1eaea;" onclick="return validateFormLC();">Get score</button></div>
+                                                <div class="input-group"><button class="btn" style="border-radius: 0px;background: #f1eaea;" id="lcCalcBtn">Get score</button></div>
                                             </div>
                                         </div>
                                     </form>
@@ -210,7 +245,7 @@
                                         <div>
                                             <p class="fw-bold mb-0" id="loveScore" style="font-size: 1rem;"></p>
                                             <p class="text-muted mb-0" id="loveScoreDesc" style="font-size: 1rem;"></p>
-                                            <button class="btn" style="border-radius: 0px;background: #f1eaea;" onclick="return restartLC();">Try again</button>
+                                            <button class="btn" style="border-radius: 0px;background: #f1eaea;" id="lcRestart">Try again</button>
                                         </div>
                                     </div>
                                 </div>
@@ -227,7 +262,7 @@
                                                 <div class="mb-4" style="font-size: 1rem;color: firebrick;" id="errTxtBmi"></div>
                                                 <div class="input-group mb-4"><span class="input-group-text">Height:</span><input id="heightOne" name="height1" class="form-control" type="number" value=""/><span class="input-group-text">m</span></div>
                                                 <div class="input-group mb-4"><span class="input-group-text">Weight:</span><input id="weightTwo" name="weight1" class="form-control" type="number" value=""/><span class="input-group-text">kg</span></div>
-                                                <div class="input-group"><button class="btn" style="border-radius: 0px;background: #f1eaea;" onclick="return validateFormBMI();">Get BMI score</button></div>
+                                                <div class="input-group"><button class="btn" style="border-radius: 0px;background: #f1eaea;"id="bmiCalcBtn">Get BMI score</button></div>
                                             </div>
                                         </div>
                                     </form>
@@ -235,7 +270,7 @@
                                         <div>
                                             <p class="fw-bold mb-0" id="bmiScore" style="font-size: 1rem;"></p>
                                             <p class="text-muted mb-0" id="bmiScoreDesc" style="font-size: 1rem;"></p>
-                                            <button class="btn" style="border-radius: 0px;background: #f1eaea;" onclick="return restartBMIc();">Try again</button>
+                                            <button class="btn" style="border-radius: 0px;background: #f1eaea;" id="bmiRestart">Try again</button>
                                         </div>
                                     </div>
                                 </div>
@@ -244,7 +279,7 @@
                     <!-- End: BMI Calculator -->
                     <!-- Start: Dice Game -->
                     <div id="diceGame" class="col">
-                        <div class="card"><img class="card-img-top w-100 d-block card-img-top w-100 fit-cover" style="height: 200px;" src="assets/img/projects/diceGame/diceGame.png" id="winnerAlertImg"  />
+                        <div class="card"><img class="card-img-top w-100 fit-cover" src="assets/img/projects/diceGame/diceGame.png" id="winnerAlertImg"  />
                             <div class="card-body p-3">
                                 <form id="diceGameForm" class="d-block" method="post" action="./index.html#diceGame" name="diceGameForm">
                                     <div class="row">
@@ -254,7 +289,7 @@
                                                 <div><img class="flex-shrink-0  fit-cover" width="50" height="50" id="player2imageBox" src="assets/img/projects/diceGame/diceroll.png"/></div>
                                             </div>
                                             <div id="winnerAlert" class="mb-4 text-center" style="font-size: 1rem;color: firebrick;"></div>
-                                            <div class="input-group d-flex justify-content-center"><button class="btn" style="border-radius: 0px;background: #f1eaea;" onclick="return rollDice();"> Roll the Dice</button></div>
+                                            <div class="input-group d-flex justify-content-center"><button class="btn" style="border-radius: 0px;background: #f1eaea;" id="rollDiceBtn"> Roll the Dice</button></div>
                                         </div>
                                     </div>
                                 </form>
@@ -266,215 +301,11 @@
             </div>
         </section>
     <!-- End: My Projects -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-    <script src="assets/js/script.min.js?h=e9987ac57f6f57122be8e387915b67d4"></script>
-    <script>
-        //Check if i am working
-            function isJohnWorking() {
-        /*
-        0 - Not working ( Available - green )
-        1 - Working on a Project ( Unavailable - red )
-        */
-
-        var workingStatusVal = 0;
-
-        var workingStatus = $(workStatus).attr("value", workingStatusVal);
-        var pulsatingCircleStatusVal = "unavailable";
-            if (workingStatusVal == 0) {
-                $(workStatus).text("Available to work");
-                $(pulsating_circle).attr("value","available");
-            }
-            if(workingStatusVal == 1){
-                $(workStatus).text("Not available");
-                $(pulsating_circle).attr("value","unavailable");
-            }            
-        }
-        //form validation for love calculator
-            function validateFormLC() {
-            let x = document.forms["loveCalcForm"]["name1"].value;
-            let y = document.forms["loveCalcForm"]["name2"].value;
-            if (x == "") {
-                document.getElementById("errTxtLC").innerHTML = "Name must be filled out";
-                return false;
-            }
-            if (y == "") {
-                document.getElementById("errTxtLC").innerHTML = "Partners name must be filled out";
-                return false;
-            }
-            if ((x == undefined || x == null || x == '') && (y === undefined || y === null || y === '')) {
-                
-                document.getElementById("errTxtLC").innerHTML = "Empty fields";
-                return false;
-            }else{
-                
-                document.getElementById("lcForm").classList.remove("d-flex");
-                document.getElementById("lcForm").classList.add("d-none");
-                document.getElementById("errTxtLC").innerHTML ="";                
-                
-                var lc = loveCalculator(x,y);
-                return false;
-            }
-        }
-        //form validation for bmi calculator
-            function validateFormBMI() {
-                let h = document.forms["bmiForm"]["height1"].value;
-                let w = document.forms["bmiForm"]["weight1"].value;
-                if (h == "") {
-                    document.getElementById("errTxtBmi").innerHTML = "Height must be filled out";
-                    return false;
-                }
-                if (w == "") {
-                    document.getElementById("errTxtBmi").innerHTML = "Weight name must be filled out";
-                    return false;
-                }
-                if ((h == undefined || h == null || h == '') && (w === undefined || w === null || w === '')) {
-                    
-                    document.getElementById("errTxtBmi").innerHTML = "Empty fields";
-                    return false;
-                }else{
-                    
-                    document.getElementById("bmiForm").classList.remove("d-flex");
-                    document.getElementById("bmiForm").classList.add("d-none");
-                    document.getElementById("errTxtBmi").innerHTML ="";                
-                    
-                    var bmi = bmiCalculator(w, h);
-                    return false;
-                }
-            }
-        //love calculator
-            function loveCalculator(x,y) { 
-                
-                var loveCalc = Math.random() * 100;
-                var loveCalcScore = Math.floor(loveCalc) + 1;
-                var showResult = document.getElementById("loveCalcResult");
-
-                if (loveCalc < 20.5){
-                    showResult.classList.remove("d-none");
-                    showResult.classList.add("d-flex");
-                    document.getElementById("loveScore").innerHTML = "Your Love Score is " + loveCalcScore;
-                    document.getElementById("loveScoreDesc").innerHTML = "You are not compatible";    
-                    document.getElementById("loveCalcStatusImg").src = "assets/img/projects/loveCalculator/no.png";
-                    
-                }   
-                if ((loveCalc > 20.5) && (loveCalc < 74.5)){
-                    showResult.classList.remove("d-none");
-                    showResult.classList.add("d-flex");
-                    document.getElementById("loveScore").innerHTML = "Your Love Score is " + loveCalcScore;
-                    document.getElementById("loveScoreDesc").innerHTML = "You can work on it";    
-                    document.getElementById("loveCalcStatusImg").src = "assets/img/projects/loveCalculator/maybe.png";
-                    
-                }   
-                if (loveCalc > 74.5){
-                    showResult.classList.remove("d-none");
-                    showResult.classList.add("d-flex");
-                    document.getElementById("loveScore").innerHTML = "Your Love Score is " + loveCalcScore;
-                    document.getElementById("loveScoreDesc").innerHTML = "you are compatible";    
-                    document.getElementById("loveCalcStatusImg").src = "assets/img/projects/loveCalculator/yes.png";
-                    
-                }
-                return false;
-            }
-        //restart button
-            function restartLC(){
-            //show form
-            document.getElementById("lcForm").classList.remove("d-none");
-            document.getElementById("lcForm").classList.add("d-flex");
-
-            //hide score
-            document.getElementById('nameOne').value = '';
-            document.getElementById('nameTwo').value = '';
-            document.getElementById("loveCalcResult").classList.remove("d-flex");
-            document.getElementById("loveCalcResult").classList.add("d-none");
-            
-        }
-        //restart Bmi button
-            function restartBMIc(){
-            //show form
-            document.getElementById("bmiForm").classList.remove("d-none");
-            document.getElementById("bmiForm").classList.add("d-flex");
-
-            //hide score
-            document.getElementById('heightOne').value = '';
-            document.getElementById('weightTwo').value = '';
-            document.getElementById("bmiCalcResult").classList.remove("d-flex");
-            document.getElementById("bmiCalcResult").classList.add("d-none");
-            
-        }
-        //bmi calculator
-            function bmiCalculator(w, h) {
-                var hSquared = Math.pow(h, 2); //MathPow get the power of 
-                var bmiCalc = w / hSquared ;
-                var roundedBmi = Math.round(bmiCalc); //round it to nearest whole number
-                var showBmiResult = document.getElementById("bmiCalcResult"); 
-
-                if (roundedBmi < 18.5){
-                    showBmiResult.classList.remove("d-none");
-                    showBmiResult.classList.add("d-flex");
-                    document.getElementById("bmiScore").innerHTML = "Your BMI is " + roundedBmi;
-                    document.getElementById("bmiScoreDesc").innerHTML = "You are underweight";    
-                    document.getElementById("bmiCalcStatusImg").src = "assets/img/projects/bmiCalculator/status/1.png";
-                }
-                if ((roundedBmi > 18.5) && (roundedBmi < 24.9)){
-                    showBmiResult.classList.remove("d-none");
-                    showBmiResult.classList.add("d-flex");
-                    document.getElementById("bmiScore").innerHTML = "Your BMI is " + roundedBmi;
-                    document.getElementById("bmiScoreDesc").innerHTML = "You are normal weight";    
-                    document.getElementById("bmiCalcStatusImg").src = "assets/img/projects/bmiCalculator/status/2.png";
-                }
-                if ((roundedBmi > 25) && (roundedBmi < 29.9)){
-                    showBmiResult.classList.remove("d-none");
-                    showBmiResult.classList.add("d-flex");
-                    document.getElementById("bmiScore").innerHTML = "Your BMI is " + roundedBmi;
-                    document.getElementById("bmiScoreDesc").innerHTML = "You are over weight";    
-                    document.getElementById("bmiCalcStatusImg").src = "assets/img/projects/bmiCalculator/status/3.png";
-                }
-                if ((roundedBmi > 30) && (roundedBmi < 34.9)){
-                    showBmiResult.classList.remove("d-none");
-                    showBmiResult.classList.add("d-flex");
-                    document.getElementById("bmiScore").innerHTML = "Your BMI is " + roundedBmi;
-                    document.getElementById("bmiScoreDesc").innerHTML = "You are obese";    
-                    document.getElementById("bmiCalcStatusImg").src = "assets/img/projects/bmiCalculator/status/4.png";
-                }
-                if (roundedBmi > 35){
-                    showBmiResult.classList.remove("d-none");
-                    showBmiResult.classList.add("d-flex");
-                    document.getElementById("bmiScore").innerHTML = "Your BMI is " + roundedBmi;
-                    document.getElementById("bmiScoreDesc").innerHTML = "You are extremely obese";    
-                    document.getElementById("bmiCalcStatusImg").src = "assets/img/projects/bmiCalculator/status/5.png";
-                }
-                return false;
-            }
-        //dice game
-            function rollDice(){
-                var ranNum1 = Math.floor(Math.random() * 6) + 1; // get number from 1 - 6
-                var randomDiceImage = "diceGame"+ ranNum1 + ".png"; // get image of dice 1 - 6
-                var randomDiceImageSrc = "assets/img/projects/diceGame/" + randomDiceImage; //location of dice 1-6 images
-
-                var image1 = document.getElementById("player1imageBox").src = randomDiceImageSrc;
-
-                var ranNum2 = Math.floor(Math.random() * 6) + 1; // get number from 1 - 6
-                var randomDiceImage2 = "diceGame"+ ranNum2 + ".png"; // get image of dice 1 - 6
-                var randomDiceImageSrc2 = "assets/img/projects/diceGame/" + randomDiceImage2; //location of dice 1-6 images
-
-                var image2 = document.getElementById("player2imageBox").src = randomDiceImageSrc2;
-
-                //if player1 wins
-
-                if (ranNum1 > ranNum2){
-                    document.getElementById("winnerAlert").innerHTML = "Player 1 wins";
-                    document.getElementById("winnerAlertImg").src = "assets/img/projects/diceGame/diceGame1wins.png";
-                }else if(ranNum2 > ranNum1){ //if player2 wins
-                    document.getElementById("winnerAlert").innerHTML = "Player 2 wins";
-                    document.getElementById("winnerAlertImg").src = "assets/img/projects/diceGame/diceGame2wins.png";
-                }else{
-                    document.getElementById("winnerAlert").innerHTML = "It's a tie";
-                    document.getElementById("winnerAlertImg").src = "assets/img/projects/diceGame/diceGameTie.png";
-                }
-                return false;
-            } 
-    </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+        <script src="assets/js/script.min.js?h=e9987ac57f6f57122be8e387915b67d4"></script>
+        <script src="assets/js/johncv.js?h=e9987ac57f6f57122be8e387915b67d4"></script>
 </body>
 
 </html>
