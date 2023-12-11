@@ -1,10 +1,13 @@
 # john-portfolio
 
 
-to do
-#update links in portfolio
-#add images of other websites
-#update social links
+To do:
 
-#create admin panel
-#make website static
+Add other websites completed
+-treeclaus [e-commerce - christmas tree order web app]
+-veetos kitchen [e-commerce - restaurant booking app]
+-Saijan [music app]
+
+- Complete Website insights
+
+- Add other projects done.
