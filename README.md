@@ -13,3 +13,5 @@ Add other websites completed
 - Complete Website insights
 
 - Add other projects done.
+
+#remove work status from toggle when in mobile
