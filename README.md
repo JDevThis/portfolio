@@ -4,14 +4,15 @@
 To do:
 
 Add other websites completed
--treeclaus [e-commerce - christmas tree order web app]
 
--veetos kitchen [e-commerce - restaurant booking app]
+#treeclaus [e-commerce - christmas tree order web app]
 
--Saijan [music app]
+#veetos kitchen [e-commerce - restaurant booking app]
 
-- Complete Website insights
+#Saijan [music app]
 
-- Add other projects done.
+#-Complete Website insights
+
+#-Add other projects done.
 
 #remove work status from toggle when in mobile
